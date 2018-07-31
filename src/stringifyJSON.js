@@ -18,15 +18,8 @@ var stringifyJSON = function(obj) {
     stringed = stringed.concat('[');
     for (var i = 0; i < obj.length; i++) {
       stringed = stringed.concat(stringifyJSON(obj[i]), ',');
-      
-      /*if (typeof obj[i] === 'object') {
-        stringifyJSON(obj[i]);
-      } else {
-        stringed.concat(processValues(val[i]));
-      }
-*/
     }
-    if(stringed.length !== 1) {
+    if (stringed.length !== 1) {
       stringed = stringed.slice(0, stringed.length - 1);
     }
     stringed = stringed.concat(']');
@@ -37,21 +30,10 @@ var stringifyJSON = function(obj) {
         stringed = stringed.concat('\"' + String(key) + '\":' + stringifyJSON(obj[key]) + ',');
       }
     }
-    if(stringed.length !== 1) {
+    if (stringed.length !== 1) {
       stringed = stringed.slice(0, stringed.length - 1);
     }
     stringed = stringed.concat('}');
   }
   return stringed;
 };
-
-
-/*
-var processValues = function(val) {
-  var type = typeof val;
-  if (type === 'number') {
-    return String(val);
-  }
-
-}
-*/
